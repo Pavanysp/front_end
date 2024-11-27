@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCourses } from "../services/facultyService";
+import CoursesUI from "./CoursesUI";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
@@ -22,19 +23,7 @@ function Courses() {
     navigate(`/courses/${courseId}/students`);
   };
 
-  return (
-    <div className="courses-container">
-      <h2>Courses Taught</h2>
-      <ul>
-        {courses.map((course) => (
-          <li key={course.cid}>
-            {course.name}{" "}
-            <button onClick={() => handleViewStudents(course.cid)}>View Students</button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <CoursesUI courses={courses} handleViewStudents={handleViewStudents} />;
 }
 
 export default Courses;

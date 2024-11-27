@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Courses from "./components/Courses";
 import Students from "./components/Students";
 import GradeStudent from "./components/GradeStudents";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
