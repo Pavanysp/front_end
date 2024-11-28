@@ -6,6 +6,7 @@ import StudentsUI from "./StudentsUi";
 function Students() {
   const { courseId } = useParams();
   const [students, setStudents] = useState([]);
+  const [, setError] = useState(null);
   const [grades, setGrades] = useState([{ sid: "", grade: "" }]);
 
   useEffect(() => {
@@ -40,8 +41,8 @@ function Students() {
 
       await gradeMultipleStudents(courseId, formattedGrades);
       alert("Grades submitted successfully!");
-    } catch (error) {
-      alert("Error submitting grades. Please try again.");
+    } catch (err) {
+      alert(err.message || "Error submitting grades. Please try again.");
     }
   };
 

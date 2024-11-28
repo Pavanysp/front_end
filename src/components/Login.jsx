@@ -6,6 +6,7 @@ import LoginUI from "./LoginUi";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -15,7 +16,7 @@ function Login() {
       localStorage.setItem("token", response.token); // Save JWT token to local storage
       navigate("/courses"); // Redirect to courses page
     } catch (error) {
-      alert("Invalid credentials. Please try again.");
+      alert(error.response?.data?.message || "Invalid credentials. Please try again.");
     }
   };
 
