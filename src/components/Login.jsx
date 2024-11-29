@@ -17,6 +17,7 @@ function Login() {
       navigate("/courses"); // Redirect to courses page
     } catch (error) {
       alert(error.response?.data?.message || "Invalid credentials. Please try again.");
+      navigate("/");
     }
   };
 

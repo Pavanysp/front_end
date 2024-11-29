@@ -14,6 +14,7 @@ function Courses() {
         setCourses(response);
       } catch (error) {
         alert(error.response?.data?.message || "Error fetching courses. Please try again.");
+        navigate('/');
       }
     }
     fetchCourses();

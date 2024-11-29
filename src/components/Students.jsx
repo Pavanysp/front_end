@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getStudentsInCourse, gradeMultipleStudents } from "../services/facultyService";
 import StudentsUI from "./StudentsUi";
-
+import { useNavigate } from "react-router-dom";
 function Students() {
   const { courseId } = useParams();
   const [students, setStudents] = useState([]);
   const [, setError] = useState(null);
   const [grades, setGrades] = useState([{ sid: "", grade: "" }]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchStudents() {
@@ -16,6 +17,7 @@ function Students() {
         setStudents(response);
       } catch (error) {
         alert("Error fetching students. Please try again.");
+        navigate('/');
       }
     }
     fetchStudents();
@@ -43,6 +45,7 @@ function Students() {
       alert("Grades submitted successfully!");
     } catch (err) {
       alert(err.message || "Error submitting grades. Please try again.");
+      navigate("/");
     }
   };
 

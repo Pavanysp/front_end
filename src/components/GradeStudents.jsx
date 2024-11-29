@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { gradeStudent } from "../services/facultyService";
 import GradeStudentUI from "./GradeStudentsui";
-
+import { useNavigate } from "react-router-dom";
 function GradeStudent() {
   const { courseId, studentId } = useParams();
   const [grade, setGrade] = useState("");
   const [,setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setGrade(""); // Initialize grade or reset on change
@@ -19,6 +20,7 @@ function GradeStudent() {
       alert("Student graded successfully!");
     } catch (error) {
       alert(error.response?.data?.message || "Error grading student. Please try again.");
+      navigate('/');
     }
   };
 
